@@ -1,0 +1,39 @@
+﻿@model BookToAuthorViewModel
+<h1>Все данные</h1>
+<form asp-action="ShowTable" method="post">
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Поиск...</label>
+        <select asp-for="selectedValue" class="form-control" id="exampleFormControlSelect1">
+            <option value="1">Название</option>
+            <option value="2">Издатель</option>
+            <option value="3">Автор</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="col-12">
+            <input asp-for="searchValue" class="form-control" />
+            <span asp-validation-for="searchValue" class="text-danger"></span>
+        </div>
+    </div>
+    <input class="btn btn-success" type="submit" value="Поиск" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Книга</th>
+            <th>Описание</th>
+            <th>Издатель</th>
+            <th>Цена</th>
+            <th>Дата производства</th>
+            <th>Автор</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (BookToAuthor bookAuthor in Model.allBookToAuthor)
+            {
+                @Html.Partial("Info", bookAuthor)
+            }
+        }
+    </tbody>
+</table>

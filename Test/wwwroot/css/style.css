@@ -1,0 +1,11 @@
+﻿body {
+    background: #fcfcfc;
+}
+
+.img-thumbnail{
+    min-height: 268px;
+}
+
+.authorheader{
+    margin-top: 4rem;
+}

@@ -1,0 +1,35 @@
+﻿@model Book
+
+<h3 class="row mt-6 authorheader">Книга</h3>
+<div class="row mb-5">
+    <form asp-action="Index" method="post">
+        <div class="form-group">
+            <label asp-for="name">Имя</label>
+            <input asp-for="name" class="form-control" />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="description">Описание</label>
+            <input asp-for="description" class="form-control" />
+            <span asp-validation-for="description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.publisherId, "Издательство", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.publisherId, ViewBag.allPublisher as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.publisherId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="price">Цена</label>
+            <input asp-for="price" class="form-control" />
+            <span asp-validation-for="price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="publishedAt">Дата публикации</label>
+            <input asp-for="publishedAt" class="form-control" />
+            <span asp-validation-for="publishedAt" class="text-danger"></span>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить" />
+    </form>
+</div>

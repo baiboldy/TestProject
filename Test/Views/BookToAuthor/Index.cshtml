@@ -1,0 +1,22 @@
+﻿@model BookToAuthor
+
+<h3 class="row mt-6 authorheader">Книга</h3>
+<div class="row mb-5">
+    <form asp-action="Index" method="post" style="width:100%">
+        <div class="form-group">
+            @Html.LabelFor(model => model.authorId, "Автор", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.authorId, ViewBag.allAuthor as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.authorId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.bookId, "Книга", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.bookId, ViewBag.allBook as SelectList, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.bookId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input class="btn btn-success" type="submit" value="Добавить" />
+    </form>
+</div>
